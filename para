@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+
+int main() {
+    char str[500]; 
+    int i, newlines = 0;
+
+    printf("Enter the String (Press Enter twice to end the paragraph):\n");
+
+   
+    while (gets(str) && strcmp(str, "") != 0) {
+        newlines++;
+    }
+
+    if (newlines >= 2) {
+        printf("The input is a paragraph.\n");
+    } else {
+        printf("The input is not a paragraph.\n");
+    }
+
+    return 0;
+}

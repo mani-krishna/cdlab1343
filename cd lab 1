@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void check(char a[]);
+
+int main() {
+    char a[100];
+    printf("Enter the value:\n");
+    scanf("%s", a);
+    check(a);
+
+    return 0;
+}
+
+void check(char a[]) {
+    int i = 0;
+    int j;
+    int isKeyword = 0;
+    const char *keywords[] = {
+        "auto", "double", "int", "struct",
+        "break", "else", "long", "switch",
+        "case", "enum", "register", "typedef",
+        "char", "extern", "return", "union",
+        "const", "float", "short", "unsigned",
+        "continue", "for", "signed", "void",
+        "default", "goto", "sizeof", "volatile",
+        "do", "if", "static", "while"
+    };
+
+
+    for ( j = 0; j < sizeof(keywords) / sizeof(keywords[0]); j++) {
+        if (strcmp(a, keywords[j]) == 0) {
+            isKeyword = 1;
+            break;
+        }
+    }
+
+    if (isKeyword) {
+        printf("%s is a C keyword.\n", a);
+    } else {
+
+
+    while (a[i] != '\0') {
+        if (isdigit(a[i])) {
+            printf("%c is an integer.\n", a[i]);
+        } else if (isalpha(a[i])) {
+            if (isupper(a[i])) {
+                printf("%c is an uppercase letter.\n", a[i]);
+            } else {
+                printf("%c is a lowercase letter.\n", a[i]);
+            }
+        } else if (ispunct(a[i])) {
+            printf("%c is a symbol.\n", a[i]);
+        } else {
+            printf("Cannot identify the character: %c\n", a[i]);
+        }
+
+        i++;
+    }
+}
+
+
+}

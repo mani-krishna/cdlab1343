@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+int isArithmeticExpression(char str[]) {
+    int i, len = strlen(str);
+
+    for (i = 0; i < len; i++) {
+        char c = str[i];
+        if (!(isdigit(c) || isspace(c) || c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')')) {
+            return 0; 
+        }
+    }
+
+    return 1; 
+}
+
+int main() {
+    char str[500]; 
+
+    printf("Enter the arithmetic expression:\n");
+    gets(str);
+
+    if (isArithmeticExpression(str)) {
+        printf("The input is an arithmetic expression.\n");
+    } else {
+        printf("The input is not an arithmetic expression.\n");
+    }
+
+    return 0;
+}

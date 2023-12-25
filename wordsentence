@@ -1,0 +1,21 @@
+#include<stdio.h> 
+#include<string.h> 
+int main(){ 
+  char str[50]; 
+  int i,spaces=0; 
+  printf("Enter the String\n"); 
+  gets(str);
+  for(i=0;i<strlen(str);i++){ 
+    if(str[i]==' ') 
+      spaces++; 
+  } 
+  if(strlen(str)==1){
+      printf("the input is not a word ");
+  }
+  else if(spaces>=1){
+      printf("the in input is a sentence");
+  }
+  else{
+      printf("the input is not a sentence it is a word");
+  }
+} 

@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include<ctype.h>
+
+bool isValidGmail(char str[]) {
+    int len = strlen(str);
+    if (len < 11 || strcmp(str + len - 10, "@gmail.com")) {
+        return false;
+    }
+    if (!isalpha(str[0])) {
+        return false;
+    }
+
+    for (int i = 1; i < len - 10; i++) {
+        char c = str[i];
+        if (!(isalnum(c) || c == '.' || c == '_')) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    char email[100]; 
+
+    printf("Enter the email address:\n");
+    gets(email);
+
+    if (isValidGmail(email)) {
+        printf("The input is a valid Gmail address.\n");
+    } else {
+        printf("The input is not a valid Gmail address.\n");
+    }
+
+    return 0;
+}

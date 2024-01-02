@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void check(char a[]);
+
+int main() {
+    char a[100];
+    printf("Enter the header:\n");
+    scanf("%s", a);
+    check(a);
+
+    return 0;
+}
+
+void check(char a[]) {
+    int i = 0;
+    int j;
+    int header = 0;
+    const char *keywords[] = {
+        "#include<stdio.h>", "#include<string.h>","#include<ctype.h>","#include<stdlib.h>","#include<math.h>",
+        "#include<time.h>","#include<errno.h>","#include<assert.h>","#include<float.h>"
+    };
+
+
+    for ( j = 0; j < sizeof(keywords) / sizeof(keywords[0]); j++) {
+        if (strcmp(a, keywords[j]) == 0) {
+            header = 1;
+            break;
+        }
+    }
+    if(header>0){
+	
+    	printf("it is a c header");}
+    else{
+    	printf("it is not a c header");
+	}
+
+
+}

@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<ctype.h>
+#include <string.h>
+int main(){
+    int c=0;
+    char a[10];
+    scanf("%s",a);
+    char *symbols[10]={"!","@","#","$","^","&",",",".","(",")"};
+    for(int i=0;i<10;i++){
+        if(strcmp(a,symbols[i])==0){
+            c++;
+        }
+    }
+    if(c>0){
+        printf("it is a symbol");
+    }
+    else{
+        printf("it nt a smblo");
+    }
+    
+}

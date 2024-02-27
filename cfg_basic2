@@ -61,3 +61,10 @@ int main(){
     }
     printf("the number of NULL productions  are %d",c);
 }
+
+
+
+//UNIT PRODUCTIONS
+#include <stdio.h>
+#include <string.h>
+

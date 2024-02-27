@@ -1,4 +1,4 @@
-// for counting non terminal
+// for counting terminal
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -12,12 +12,12 @@ int main(){
             c++;
         }
     }
-    printf("the number of non terminals are %d",len-c);
+    printf("the number of  terminals are %d",len-c);
 }
 
 
 
-// for counting terminal
+// for counting non terminal
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -32,4 +32,22 @@ int main(){
         }
     }
     printf("the number of non terminals are %d",c-1);
+}
+
+
+// for counting null
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(){
+    char a[100];
+    int c=0;
+    scanf("%s",a);
+    int len=strlen(a);
+    for(int i=0;i<len;i++){
+        if(a[i]=='#'){
+            c++;
+        }
+    }
+    printf("the number of NULL productions  are %d",c);
 }

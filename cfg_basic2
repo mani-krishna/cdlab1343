@@ -64,7 +64,35 @@ int main(){
 
 
 
-//UNIT PRODUCTIONS
+//unit poductions
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+int main(){
+    char a[100];
+    int j,c=0,d=0;
+    fgets(a,sizeof(a),stdin);
+    int len=strlen(a);
+    a[len-1]=='\0';
+    int flag[256]={0};
+    for(int i=3;i<len;i++){
+        if(isupper(a[i])&&a[i-1]=='>'&&a[i+1]=='/'||isupper(a[i])&&a[i-1]=='/'&&a[i+1]=='/'){
+                j=(int)a[i];
+                flag[j]=1;
+        }
+    }
+    for(int i=3;i<len;i++){
+        if(isupper(a[i])&&a[i+1]=='-'){
+            j=(int)a[i];
+                flag[j]=0;
+        }
+    }
+    
+    
+    for(int j=0;j<256;j++){
+        if(flag[j]==1){
+        c++;}
+    }
+    printf("The number of unit productions %d",c);
+}
 

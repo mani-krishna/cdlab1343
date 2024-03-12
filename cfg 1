@@ -1,0 +1,134 @@
+CFG PROGRAMS
+
+1.Valid CFG production
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+char input[10];
+printf("enter the production: ");
+scanf("%s",input);
+if (strlen(input)>=4 &&
+input[0]>=’A’ && input[0]<=’Z’ &&
+input[1]'-' && input[2]'>' &&
+((input[3]>=’A’ && input[3]<= 'Z') ||
+(input[3]>=’0’ && input[3]<= '9') ||
+(input[3]>=’a’ && input[3]<= 'b'))) {
+printf("It’s a CFG\n");
+} else {
+printf("Not a CFG\n");
+}
+return 0;
+}
+
+2.Number of productions of valid CFG
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+int newline=0;
+char n[100];
+printf("enter the input. enter twice to end the input intake.\n");
+while(gets(n)&&strcmp(n,"")!=0){
+newline;
+if(strchr(n,’/’)!=NULL){
+newline;
+}
+}
+printf("%d\n",newline);
+return 0;
+}
+
+BASIC LEX PROGRMAS PART 2
+
+Count the number of terminals in rhs
+#include<stdio.h>
+#include<string.h>
+int main() {
+char input[10];
+int flag=0;
+int i;
+printf("enter the valid production: ");
+scanf("%s",input);
+for(i=3;i<=10;i){
+if(input[i]>=’A’ && input[i]<=’Z’){
+flag;
+}
+}
+printf("%d",flag);
+return 0;
+}
+
+2.Counting number of non terminals
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+char input[10];
+int flag=0;
+int i;
+printf("enter the valid production: ");
+scanf("%s",input);
+for(i=3;i<=10;i){
+if(input[i]>=’A’ && input[i]<=’Z’){
+flag;
+}
+}
+printf("%d",flag);
+return 0;
+}
+
+Counting the number of epsilon (#)
+#include<stdio.h>
+#include<string.h>
+int main() {
+char input[100];
+int flag=0;
+int i;
+printf("enter the valid production: ");
+scanf("%s",input);
+for(i=0;i<=100;i){
+if(input[i]==’#’){
+flag;
+}
+}
+printf("%d",flag);
+return 0;
+}
+
+Count the number of unit productions
+#include<stdio.h>
+#include<string.h>
+int main() {
+char input[100];
+int flag=0;
+int i;
+printf("enter the valid production: ");
+scanf("%s",input);
+for(i=0;i<=100;i){
+if(input[i]>=’A’ && input[i]<=’Z’ && (input[i+1]'/' || input[i+1]" ") && (input[i-1]'/’|| input[i-1]'>' )){
+flag;
+}
+}
+printf("%d",flag);
+return 0;
+}
+
+Number of useless productions
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main() {
+char a[100];
+int flag=0;
+int i;
+printf("enter the valid production: ");
+scanf("%s",a);
+for(i=0;i<=100;i){
+if(isupper (a[i]) && a[i+1]==’/’ && a[i-1]!=’>’ ){
+flag;
+}
+}
+printf("%d",flag);
+return 0;
+}

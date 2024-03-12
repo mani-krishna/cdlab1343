@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(){
+    char a[100];
+    int j,c=0,d=0;
+    fgets(a,sizeof(a),stdin);
+    int len=strlen(a);
+    a[len-1]=='\0';
+    for(int i=0;i<len-1;i++){
+        if(a[0]==a[3]){
+                d=1;
+        }
+    }
+    if(d){
+        printf("it is recursive");
+    }
+    else{
+        printf("it is not recursive");
+    }
+}

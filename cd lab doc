@@ -1,0 +1,688 @@
+BASIC LEX PROGRAMS
+
+1.Integer
+
+#include<stdio.h>
+int main()
+{
+    int a;
+    float b;
+    char c;
+    printf("enter input ");
+    scanf("%f",&b);
+    a=(int)b;
+    if(a==b && a!=c && b!=c)
+    {
+        printf("integer");
+    }
+    else 
+    {
+        printf("not integer");
+    }
+    return 0;
+}
+
+2.Real
+
+#include<stdio.h>
+int main()
+{
+    int a;
+    float b;
+    char c;
+    printf("enter input ");
+    scanf("%f",&b);
+    a=(int)b;
+    if(a!=b && a!=c && b!=c)
+    {
+        printf("real");
+    }
+    else 
+    {
+        printf("not real");
+    }
+    return 0;
+}
+
+3. Uppercase
+
+Without isupper
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if(a>='A' && a<='Z'){
+        printf("its uppercase ");
+    }
+    else{
+        printf("not uppercase");
+    }
+    return 0;
+}
+
+With isupper
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if(isupper(a)){
+        printf("its uppercase ");
+    }
+    else{
+        printf("not uppercase");
+    }
+    return 0;
+}
+
+4. Lowercase
+
+Without islower
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if(a>='a' && a<='z'){
+        printf("its lowercase ");
+    }
+    else{
+        printf("not lowercase");
+    }
+    return 0;
+}
+
+With islower
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if(islower(a)){
+        printf("its lowercase ");
+    }
+    else{
+        printf("not lowercase");
+    }
+    return 0;
+}
+
+5. Arithmetic operators
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if(a=='+' || a=='-' || a=='/' || a=='*'){
+        printf("is an arithmetic operator ");
+    }
+    else{
+        printf("not an arithmetic operator");
+    }
+    return 0;
+}
+
+
+6.Symbols
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char a;
+    printf("enter the input ");
+    scanf("%c",&a);
+    if((a>=33 && a<=46) || (a>=58 && a<=64) || (a>=91 && a<=96)||(a>=123 && a<=126))
+    if(a!='+' && a!='-' && a!='/' && a!='*'){
+        printf("is a special character or symbol");
+    }
+    else{
+        printf("not a special character or symbol");
+    }
+    return 0;
+}
+
+7. Keywords
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char words[32][10]={"auto","double","int","struct","break","else","long","switch","case","enum","register","typedef","char",
+"extern","return","union","const","float","short",
+"unsigned","continue","for","signed","void","default",
+"goto","sizeof","voltile","do","if","static","while"};
+char a[10];
+int i;
+int flag=0;
+printf("enter input ");
+scanf("%s",&a);
+for(i=0;i<32;i++){
+    if(strcmp(a,words[i])==0){
+        flag=1;
+        break;
+    }
+}  
+if(flag==1){
+    printf("is a keyword");
+}
+else{
+    printf("not a keyword");
+}
+}
+
+
+
+
+ADVANCED LEX PROGRAMS
+
+1,2.WORD AND SENTENCE
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    int i;
+    char n[50];
+    int spaces=0;
+    printf("enter the input ");
+    gets(n);
+    for(i=0;i<strlen(n);i++){
+        if(n[i]==' '){
+            spaces++;
+        }
+    }
+    if(strlen(n)==1){
+        printf("its not a word");
+    }
+    else if(spaces>=1){
+        printf("its a sentence");
+    }
+    else{
+        printf("its a word");
+    }
+}
+
+3.PARAGRAPH
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    int newline=0;
+    char n[100];
+    printf("enter the input. enter twice to end the input intake.\n");
+    while(gets(n)&&strcmp(n,"")!=0){
+        newline++;
+    }
+    if(newline>=2){
+        printf("its a paragraph");
+    }
+    else{
+        printf("its not a paragraph");
+    }
+    return 0;
+}
+4.ARITHMETIC EXPRESSION 
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main(){
+    char n[50];
+    int i;
+    int flag=0;
+    printf("enter the input\n");
+    scanf("%s",n); 
+    for(i=0; i<strlen(n); i++){
+        if(((n[0]>='0' && n[0]<='9') || (n[0]>='a' && n[0]<='z') || (n[0]>='A' && n[0]<='Z')) && 
+          (n[1]=='+' || n[1]=='-' || n[1]=='*' || n[1]=='/')) { // 
+            flag = 1;  
+        } else if (n[strlen(n)-1]=='=' && 
+                  ((n[0]>='0' && n[0]<='9') || (n[0]>='a' && n[0]<='z') || (n[0]>='A' && n[0]<='Z'))) {
+            flag = 1;  
+        } else {
+            flag = 0;  
+            break;     
+        }
+    }
+    if(flag == 1) {
+        printf("valid\n");
+    } else {
+        printf("invalid\n");
+    }
+    return 0;
+}
+
+5.VALID GMAIL
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char email[100];
+    printf("Enter an email address: ");
+    scanf("%s", email);
+    int elen = strlen(email);
+    int glen = strlen("@gmail.com");
+    if (elen >= glen) {
+        int sindex = elen - glen;
+        if (strncmp(email + sindex, "@gmail.com",glen) == 0) {
+            if (isalpha(email[0])) {
+                printf("Valid Gmail ID\n");
+            } else {
+                printf("Invalid Gmail ID\n");
+            }
+        } else {
+            printf("Invalid Gmail ID\n");
+        }
+    } else {
+        printf("Invalid Gmail ID: Email length is too short\n");
+    }
+
+    return 0;
+}
+
+VALID STUDENT EMAIL
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char email[100];
+    printf("Enter a Gitam email address: ");
+    scanf("%s", email);
+    int emailLength = strlen(email);
+    int domainLength = strlen("@gitam.in");
+    if (emailLength >= domainLength) {
+        int domainStartIndex = emailLength - domainLength;
+        if (strncmp(email + domainStartIndex, "@gitam.in", domainLength) == 0) {
+            if (strlen(email) == 15) {
+                int isValidUsername = 1; 
+                for (int i = 0; i < 5; i++) {
+                    if (!isalpha(email[i])) {
+                        isValidUsername = 0; 
+                        break;
+                    }
+                }
+                if (isValidUsername  || isdigit(email[6])) {
+                    printf("Valid Gitam student ID\n");
+                } else {
+                    printf("Invalid Gitam student ID: Username must have alphabets and the 6th character can be a number\n");
+                }
+            } else {
+                printf("Invalid Gitam student ID: Username length must be 15 characters\n");
+            }
+        } else {
+            printf("Invalid Gitam student ID: Email domain must be @gitam.in\n");
+        }
+    } else {
+        printf("Invalid Gitam student ID: Email length is too short\n");
+    }
+    return 0;
+}
+
+GITAM FACULTY ID
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char email[100];
+    printf("Enter a Gitam email address: ");
+    scanf("%s", email);
+    int emailLength = strlen(email);
+    int domainLength = strlen("@gitam.edu");
+
+    if (emailLength >= domainLength) {
+        int domainStartIndex = emailLength - domainLength;
+        if (strncmp(email + domainStartIndex, "@gitam.edu", domainLength) == 0) {
+            if (strlen(email) == 16) {
+                int isValidUsername = 1;
+                for (int i = 0; i < 5; i++) {
+                    if (!isalpha(email[i])) {
+                        isValidUsername = 0; 
+                        break;
+                    }
+                }
+                if (isValidUsername || isdigit(email[5])) {
+                    printf("Valid Gitam faculty ID\n");
+                } else {
+                    printf("Invalid Gitam faculty ID\n");
+                }
+            } else {
+                printf("Invalid Gitam faculty ID\n");
+            }
+        } else {
+            printf("Invalid Gitam faculty ID\n");
+        }
+    } else {
+        printf("Invalid Gitam faculty ID\n");
+    }
+
+    return 0;
+}
+
+HEADER FILE
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+int main(){
+    int c=0;
+    char  a[100];
+    printf("enter the input ");
+    fgets(a, sizeof(a), stdin);
+    a[strlen(a) - 1] = '\0';
+    char *headers[4]={"#include<stdio.h>","#include<string.h>","#include<math.h>","#include<ctype.h>"};
+    for(int i=0;i<4;i++){
+        if(strcmp(a,headers[i])==0){
+            c++;
+        }
+    }
+    if(c>0){
+        printf("yes");}
+    else{
+        printf("no");
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CFG PROGRAMS
+
+1.Valid CFG production
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+    char input[10];
+    printf("enter the production: ");
+    scanf("%s",input);
+    if (strlen(input)>=4 &&
+        input[0]>='A' && input[0]<='Z' &&    
+        input[1]=='-' && input[2]=='>' &&    
+        ((input[3]>='A' && input[3]<= 'Z') ||  
+         (input[3]>='0' && input[3]<= '9') ||  
+         (input[3]>='a' && input[3]<= 'b'))) { 
+        printf("It's a CFG\n");
+    } else {
+        printf("Not a CFG\n");
+    }
+    return 0;
+}
+
+*2.Number of productions of valid CFG*
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    int newline=0;
+    char n[100];
+    printf("enter the input. enter twice to end the input intake.\n");
+    while(gets(n)&&strcmp(n,"")!=0){
+        newline++;
+        if(strchr(n,'/')!=NULL){
+            newline++;
+        }
+    }
+    printf("%d\n",newline);
+    return 0;
+}
+
+BASIC LEX PROGRMAS PART 2
+
+1. Count the number of terminals in rhs 
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+    char input[10];
+    int flag=0;
+    int i;
+    printf("enter the valid production: ");
+    scanf("%s",input);
+    for(i=3;i<=10;i++){
+        if(input[i]>='A' && input[i]<='Z'){
+            flag++;
+        }
+    }
+    printf("%d",flag);
+    return 0;
+}
+ 
+2.Counting number of non terminals
+   
+    #include<stdio.h>
+#include<string.h>
+int main() {
+    char input[10];
+    int flag=0;
+    int i;
+    printf("enter the valid production: ");
+    scanf("%s",input);
+    for(i=3;i<=10;i++){
+        if(input[i]>='A' && input[i]<='Z'){
+            flag++;
+        }
+    }
+    printf("%d",flag);
+    return 0;
+}
+
+3. Counting the number of epsilon (#)
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+    char input[100];
+    int flag=0;
+    int i;
+    printf("enter the valid production: ");
+    scanf("%s",input);
+    for(i=0;i<=100;i++){
+        if(input[i]=='#'){
+            flag++;
+        }
+    }
+    printf("%d",flag);
+    return 0;
+}
+
+4. Count the number of unit productions
+
+#include<stdio.h>
+#include<string.h>
+int main() {
+    char input[100];
+    int flag=0;
+    int i;
+    printf("enter the valid production: ");
+    scanf("%s",input);
+    for(i=0;i<=100;i++){
+        if(input[i]>='A' && input[i]<='Z' && (input[i+1]=='/' || input[i+1]==" ") && (input[i-1]=='/'|| input[i-1]=='>' )){
+            flag++;
+        }
+    }
+    printf("%d",flag);
+    return 0;
+}
+
+
+5. Number of useless productions
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main() {
+    char a[100];
+    int flag=0;
+    int i;
+    printf("enter the valid production: ");
+    scanf("%s",a);
+    for(i=0;i<=100;i++){
+        if(isupper (a[i]) && a[i+1]=='/' && a[i-1]!='>' ){
+            flag++;
+        }
+    }
+    printf("%d",flag);
+    return 0;
+}
+
+
+
+
+1.To check for recursive grammar
+
+#include<stdio.h>
+int main(){
+    char input[20];
+    int i;
+    printf("enter the production: ");
+    scanf("%s",input);
+    if (input[0] >= 'A' && input[0] <= 'Z' && input[0] == input[3]) {
+        printf("It has recursion");
+    } 
+    else {
+        for (i = 0; i < 20; i++) {
+            if (input[i] == '/' && input[i + 1] == input[0]) {
+                printf("It has recursion");
+                break; 
+            }
+        }
+        if (i == 20) {
+            printf("It has no recursion");
+        }
+    }
+    return 0;
+}
+
+2.Number of recursive productions
+
+#include<stdio.h>
+int main() {
+    char input[20];
+    int i, recursive_count = 0;
+    int d;
+    printf("Enter the production: ");
+    scanf("%s", input);
+    for (i = 0; i < 20 && input[i] != '\0'; i++) {
+        if (input[i] == 'A' && (i == 0 || input[i - 1] == '/')) {
+            recursive_count++;
+        }
+    }
+    d=recursive_count-1;
+    printf("Total number of recursive productions: %d\n", d);
+    return 0;
+}
+
+
+
+
+
+3. Accept recursive grammar as input, remove the recursion, and display the new grammar.
+
+From the internet
+
+  #include<stdio.h>
+  #include<string.h>
+  #define SIZE 20
+  int main ()
+  {
+       char non_terminal;
+       char beta,alpha;
+       int num;
+       int i;
+       char production[10][SIZE];
+       int index=3;
+       printf("Enter Number of Production : ");
+       scanf("%d",&num);
+       printf("Enter the grammar as E->E-A :\n");
+       for(i=0;i<num;i++)
+       {
+            scanf("%s",production[i]);
+       }
+       for(i=0;i<num;i++)
+       {
+            printf("\nGRAMMAR : : : %s",production[i]);
+            non_terminal=production[i][0];
+            if(non_terminal==production[i][index])
+            {
+                 alpha=production[i][index+1];
+                 printf(" is left recursive.\n");
+                 while(production[i][index]!=0 && production[i][index]!='|')  
+                 {
+                    index++;  
+                 }
+                 if(production[i][index]!=0)  
+                 {
+                      beta=production[i][index+1];
+                      printf("Grammar without left recursion:\n");
+                      printf("%c->%c%c\'",non_terminal,beta,non_terminal);
+                      printf("\n%c\'->%c%c%c\'|e\n",non_terminal,alpha,beta,non_terminal);
+                 }
+                 else
+                      printf(" can't be reduced\n");
+            }
+            else
+                 printf(" is not left recursive.\n");
+            index=3;
+       }
+  getchar();
+  }  
+
+
+My own program
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char n[40];
+    int i;
+    printf("enter the production : ");
+    scanf("%s",n);
+    for(i=0;i<strlen(n);i++){
+        if(n[0]==n[3]){
+            printf("%c%c%c%c%c'\n",n[0],n[1],n[2],n[strlen(n)-1],n[0]);
+            printf("%c'%c%c%c%c'%cE",n[0],n[1],n[2],n[4],n[0],n[5]);
+            break;
+        }
+    }
+}
+

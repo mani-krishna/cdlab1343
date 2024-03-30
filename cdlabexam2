@@ -121,3 +121,26 @@ int main() {
 }
 
 
+#null productions
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main() {
+    char a[100];
+    int j,c=0;
+    fgets(a,sizeof(a),stdin);
+    int len = strlen(a);
+    a[len-1]='\0';
+    int flag[256]={0};
+    
+    for(int i=3;i<len;i++){
+        if(a[i]=='#'){
+            c++;
+        }
+    }
+    
+    printf("no of null productions is %d",c);
+}
+
+
+

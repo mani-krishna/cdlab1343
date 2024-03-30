@@ -88,6 +88,35 @@ int main() {
             c=c+1;
         }
     }
+
+
+#no of non terminals
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main() {
+    char a[100];
+    int j,c=0;
+    fgets(a,sizeof(a),stdin);
+    int len = strlen(a);
+    a[len-1]='\0';
+    int flag[256]={0};
+    
+    for(int i=3;i<len;i++){
+        if(isupper(a[i])){
+            j = (int)a[i];
+            flag[j]=1;
+        }
+    }
+    for(int i=0;i<256;i++){
+        if(flag[i]>0){
+            c=c+1;
+        }
+    }
+    printf("no of non terminals %d",c+1);
+}
+
+
     printf("no of terminals %d",c);
 }
 
